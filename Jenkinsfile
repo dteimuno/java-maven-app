@@ -20,6 +20,7 @@ pipeline {
         stage("build jar") {
             steps {
                 script {
+                    buildJar()
                 }
             }
         }
@@ -27,9 +28,9 @@ pipeline {
         stage("build and push image") {
             steps {
                 script {
-                    buildImage 'nanatwn/demo-app:jma-3.0'
+                    buildImage 'dteimuno/demo-app:jma-3.0'
                     dockerLogin()
-                    dockerPush 'nanatwn/demo-app:jma-3.0'
+                    dockerPush 'dteimuno/demo-app:jma-3.0'
                 }
             }
         }
