@@ -8,6 +8,13 @@
     <artifactId>java-maven-app</artifactId>
     <version>1.1.0-SNAPSHOT</version>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.release>21</maven.compiler.release>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -23,14 +30,15 @@
                 </executions>
             </plugin>
 
-            <!-- to handle any Java version mismatch, add the following configuration for maven-compiler-plugin -->
+            <!-- Configure compiler to build with Java 21. Using `release` is preferred to align
+                 bootclasspath/standard APIs for the targeted JDK. Update plugin version to a
+                 modern Maven Compiler Plugin that supports the release flag. -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.0</version>
+                <version>3.11.0</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <release>${maven.compiler.release}</release>
                 </configuration>
             </plugin>
         </plugins>
